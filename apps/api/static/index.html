@@ -9,61 +9,93 @@
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <!-- Firebase SDK (v10 Compat) -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+  <script>
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyA7SpSw4TIIv52eZgUq31yMsbjk0eQRsKI",
+      authDomain: "hackxl.firebaseapp.com",
+      projectId: "hackxl",
+      storageBucket: "hackxl.firebasestorage.app",
+      messagingSenderId: "765716719209",
+      appId: "1:765716719209:web:f7c3e3d1c19a1e530d24f8",
+      measurementId: "G-K373KRXX7T"
+    };
+    window.firebaseConfig = firebaseConfig;
+    if (typeof firebase !== 'undefined' && firebase.apps && !firebase.apps.length) {
+      try {
+        firebase.initializeApp(firebaseConfig);
+        if (firebase.analytics) {
+          firebase.analytics();
+        }
+      } catch (e) {
+        console.warn('Firebase init:', e);
+      }
+    }
+  </script>
   <style>
     :root {
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
-      /* Minimal Clean Institutional Palette */
-      --bg-app: #f8fafc;
+      /* Stitch Design System: Compassionate Guidance Tokens */
+      --bg-app: #f8f9ff;
       --bg-surface: #ffffff;
-      --bg-subtle: #f1f5f9;
-      --bg-hover: #f8fafc;
+      --bg-subtle: #eff4ff;
+      --bg-container: #e6eeff;
+      --bg-hover: #f1f5fd;
 
       --border-color: #e2e8f0;
       --border-subtle: #edf2f7;
-      --border-focus: #0284c7;
+      --border-focus: #004ac6;
 
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --text-dim: #94a3b8;
+      --text-main: #0d1c2f;
+      --text-muted: #434655;
+      --text-dim: #737686;
 
-      /* CampusPulse Brand Colors */
-      --primary-blue: #0284c7;
-      --primary-blue-hover: #0369a1;
-      --primary-blue-subtle: #e0f2fe;
-      --primary-blue-border: #bae6fd;
+      /* Stitch Brand Colors (Compassionate Guidance) */
+      --primary-blue: #004ac6;
+      --primary-blue-hover: #003ea8;
+      --primary-blue-subtle: #eff4ff;
+      --primary-blue-border: #bfdbfe;
+      --primary-accent: #2563eb;
 
-      --accent-orange: #ea580c;
-      --accent-orange-light: #f97316;
-      --accent-orange-subtle: #ffedd5;
+      --accent-secondary: #712ae2;
+      --accent-secondary-subtle: #f3e8ff;
+      --accent-secondary-border: #ddd6fe;
 
-      /* Semantic Tiers */
-      --tier-ps-bg: #fef2f2;
+      --accent-orange: #d97706;
+      --accent-orange-light: #f59e0b;
+      --accent-orange-subtle: #fef3c7;
+
+      /* Status Tiers (Stitch: Guidance-first status accents) */
+      --tier-ps-bg: #fee2e2;
       --tier-ps-fg: #991b1b;
-      --tier-ps-border: #fecaca;
+      --tier-ps-border: #fca5a5;
 
-      --tier-rev-bg: #fefce8;
-      --tier-rev-fg: #854d0e;
-      --tier-rev-border: #fef08a;
+      --tier-rev-bg: #fef3c7;
+      --tier-rev-fg: #d97706;
+      --tier-rev-border: #fde68a;
 
       --tier-wl-bg: #eff6ff;
-      --tier-wl-fg: #1e40af;
+      --tier-wl-fg: #004ac6;
       --tier-wl-border: #bfdbfe;
 
-      --tier-ot-bg: #f0fdf4;
-      --tier-ot-fg: #166534;
-      --tier-ot-border: #bbf7d0;
+      --tier-ot-bg: #ecfdf5;
+      --tier-ot-fg: #059669;
+      --tier-ot-border: #a7f3d0;
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-ambient: 0 4px 16px -2px rgba(13, 28, 47, 0.05), 0 2px 6px -1px rgba(13, 28, 47, 0.02);
+      --shadow-card: 0 8px 24px -4px rgba(13, 28, 47, 0.06), 0 2px 6px -1px rgba(13, 28, 47, 0.02);
     }
 
     [data-theme="dark"] {
@@ -146,6 +178,19 @@
     [data-theme="dark"] [style*="color: #0f172a"],
     [data-theme="dark"] [style*="color:#334155"],
     [data-theme="dark"] [style*="color: #334155"] {
+      color: var(--text-main) !important;
+    }
+
+    /* Dark mode: profile badge always visible with proper contrast */
+    [data-theme="dark"] .user-profile-badge {
+      background: var(--bg-subtle) !important;
+      border-color: var(--border-color) !important;
+    }
+    [data-theme="dark"] .user-profile-badge:hover {
+      background: #3b4f68 !important;
+      border-color: var(--primary-blue) !important;
+    }
+    [data-theme="dark"] .user-name-label {
       color: var(--text-main) !important;
     }
 
@@ -295,7 +340,7 @@
       background: var(--bg-app);
     }
     .top-navbar {
-      height: 56px;
+      height: 60px;
       background: var(--bg-surface);
       border-bottom: 1px solid var(--border-color);
       display: flex;
@@ -304,74 +349,137 @@
       padding: 0 24px;
       z-index: 30;
       flex-shrink: 0;
+      gap: 20px;
     }
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      flex: 1;
+      max-width: 440px;
     }
     .sidebar-toggle-btn {
       background: transparent;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 5px 8px;
+      padding: 6px 9px;
       cursor: pointer;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .sidebar-toggle-btn:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border-color: #cbd5e1;
     }
     .search-pill-box {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 5px 12px;
-      width: 320px;
+      border-radius: 20px;
+      padding: 6px 14px;
+      flex: 1;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
     .search-pill-box:hover {
-      border-color: #cbd5e1;
+      border-color: #94a3b8;
       background: #ffffff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
     }
-    .search-mock-text { font-size: 0.8rem; color: var(--text-muted); flex: 1; }
+    .search-mock-text { font-size: 0.82rem; color: var(--text-muted); flex: 1; }
     .search-cmd-badge {
       font-size: 0.68rem;
-      padding: 2px 5px;
+      padding: 2px 6px;
       background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 4px;
-      color: var(--text-muted);
+      border-radius: 6px;
+      color: var(--text-dim);
       font-family: var(--font-mono);
+      font-weight: 600;
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .role-selector-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      color: var(--text-main);
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.15s ease;
+      font-family: var(--font-sans);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      max-width: 260px;
+    }
+    .role-selector-pill:hover, .role-selector-pill:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+    /* Dark mode: role selector dropdown options */
+    [data-theme="dark"] .role-selector-pill {
+      background: var(--bg-subtle) !important;
+      color: var(--text-main) !important;
+    }
+    [data-theme="dark"] .role-selector-pill option {
+      background: var(--bg-surface);
+      color: var(--text-main);
     }
     .user-profile-badge {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 4px 8px;
-      border-radius: var(--radius-sm);
+      gap: 9px;
+      padding: 4px 10px 4px 4px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      border-radius: 24px;
       cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .user-profile-badge:hover {
+      border-color: var(--primary-blue);
+      background: var(--bg-subtle);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
     }
     .user-avatar {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: #e2e8f0;
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: #ffffff;
+      box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+      flex-shrink: 0;
     }
-    .user-name-label { font-size: 0.82rem; font-weight: 600; color: #1e293b; }
+    .user-name-label { 
+      font-size: 0.82rem; 
+      font-weight: 600; 
+      color: var(--text-main); 
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
 
     /* Content Area */
     .main-content {
@@ -418,105 +526,140 @@
       gap: 10px;
     }
 
-    /* Buttons */
+    /* Buttons - Stitch Humane Guidance Spec */
     .btn {
-      padding: 7px 14px;
+      padding: 8px 16px;
       border-radius: var(--radius-sm);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
       border: 1px solid transparent;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.15s ease;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
       text-decoration: none;
     }
-    .btn-primary { background: var(--primary-blue); color: #ffffff; }
-    .btn-primary:hover { background: var(--primary-blue-hover); }
-    .btn-outline { background: #ffffff; border-color: var(--border-color); color: #334155; }
-    .btn-outline:hover { background: var(--bg-subtle); border-color: #cbd5e1; }
-    .btn-sm { padding: 5px 10px; font-size: 0.78rem; }
+    .btn-primary { 
+      background: var(--primary-accent); 
+      color: #ffffff; 
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
+    }
+    .btn-primary:hover { 
+      background: var(--primary-blue-hover); 
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      transform: translateY(-1px);
+    }
+    .btn-outline { 
+      background: #ffffff; 
+      border-color: var(--border-color); 
+      color: var(--text-main); 
+    }
+    .btn-outline:hover { 
+      background: var(--bg-subtle); 
+      border-color: #cbd5e1; 
+      color: var(--primary-blue);
+    }
+    .btn-sm { padding: 5px 12px; font-size: 0.78rem; border-radius: 6px; }
     .btn-split {
       display: flex;
       align-items: center;
-      background: var(--primary-blue);
+      background: var(--primary-accent);
       color: #ffffff;
       border-radius: var(--radius-sm);
       overflow: hidden;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
     }
     .btn-split button {
       background: transparent;
       border: none;
       color: #ffffff;
       font-weight: 600;
-      padding: 7px 14px;
-      font-size: 0.82rem;
+      padding: 8px 16px;
+      font-size: 0.84rem;
       cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn-split button:hover {
+      background: rgba(255,255,255,0.12);
     }
     .btn-split .btn-split-arrow {
       border-left: 1px solid rgba(255,255,255,0.25);
-      padding: 7px 10px;
+      padding: 8px 10px;
     }
 
-    /* Cards */
+    /* Cards - Stitch Spec */
     .card {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 18px 20px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-ambient);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-card);
+      border-color: #cbd5e1;
     }
 
-    /* Alert Banner */
+    /* Alert Banner - Warm Nurturing Scaffolding */
     .alert-banner {
-      background: #fefce8;
-      border: 1px solid #fef08a;
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      margin-bottom: 18px;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.85rem;
-      color: #713f12;
+      font-size: 0.86rem;
+      color: #92400e;
+      box-shadow: 0 2px 8px -2px rgba(217, 119, 6, 0.08);
     }
-    .alert-banner strong { font-weight: 600; color: #854d0e; }
+    .alert-banner strong { font-weight: 700; color: #b45309; }
     .alert-banner a { color: var(--primary-blue); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
     /* KPI Row */
     .kpi-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 14px;
-      margin-bottom: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
     }
     .kpi-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 16px 18px;
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+      border-color: #cbd5e1;
     }
     .kpi-icon-circle {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       flex-shrink: 0;
     }
-    .kpi-icon-circle.green { background: #dcfce7; color: #166534; }
-    .kpi-icon-circle.red { background: #fee2e2; color: #991b1b; }
-    .kpi-icon-circle.blue { background: #e0f2fe; color: #0369a1; }
-    .kpi-icon-circle.amber { background: #fef3c7; color: #92400e; }
+    .kpi-icon-circle.green { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .kpi-icon-circle.red { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .kpi-icon-circle.blue { background: #eff6ff; color: #004ac6; border: 1px solid #bfdbfe; }
+    .kpi-icon-circle.amber { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
     .kpi-info { flex: 1; }
-    .kpi-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
-    .kpi-value { font-size: 1.45rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); line-height: 1.2; margin-top: 2px; }
+    .kpi-label { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0.01em; }
+    .kpi-value { font-size: 1.6rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-main); line-height: 1.2; margin-top: 2px; }
+
 
     /* Filter Bar */
     .filter-bar {
@@ -584,36 +727,41 @@
       border-bottom-color: var(--accent-orange);
     }
 
-    /* Tables */
+    /* Tables - Stitch Relational Care Roster Spec */
     .table-container {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-ambient);
       overflow-x: auto;
     }
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       text-align: left;
     }
     .data-table th {
-      background: #fafafa;
-      color: #64748b;
-      font-weight: 600;
-      font-size: 0.75rem;
+      background: #f8fafc;
+      color: var(--text-dim);
+      font-weight: 700;
+      font-size: 0.74rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 10px 14px;
+      letter-spacing: 0.05em;
+      padding: 12px 18px;
       border-bottom: 1px solid var(--border-color);
     }
     .data-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--border-subtle);
-      color: #334155;
+      padding: 14px 18px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--text-main);
       vertical-align: middle;
+      transition: background-color 0.15s ease;
     }
-    .data-table tr:hover td { background-color: var(--bg-hover); }
+    .data-table tr:hover td { 
+      background-color: #f8faff; 
+    }
+
 
     /* Semantic Badges */
     .tier-badge {
@@ -1398,25 +1546,34 @@
       padding: 0 10px;
     }
 
-    /* User Profile Dropdown Menu */
+    /* User Profile Dropdown Menu - Clean Glass Card */
     .user-profile-wrapper {
       position: relative;
     }
     .user-profile-dropdown {
       position: absolute;
-      top: 48px;
+      top: 50px;
       right: 0;
-      width: 250px;
-      background: #ffffff;
+      width: 270px;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
-      padding: 14px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.16), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+      padding: 16px;
       display: none;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       z-index: 100;
+      animation: dropdownFadeIn 0.15s ease-out;
     }
+    [data-theme="dark"] .user-profile-dropdown {
+      box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.4), 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+    }
+    @keyframes dropdownFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
 
     /* Toast */
     #toast-container {
@@ -1679,6 +1836,139 @@
       margin: 10px 0;
       overflow-x: auto;
     }
+
+    /* ══════════════════════════════════════════════════════════════════════ */
+    /* NAAC & NEP 2020 EVALUATION PLATFORM STYLES */
+    /* ══════════════════════════════════════════════════════════════════════ */
+    .naac-hero-card {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e3a8a 100%);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 32px -4px rgba(30, 27, 75, 0.25);
+    }
+    .naac-hero-card::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .naac-grid-7 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .naac-crit-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .naac-crit-card:hover {
+      border-color: #a855f7;
+      box-shadow: 0 8px 24px -4px rgba(124, 58, 237, 0.12);
+      transform: translateY(-2px);
+    }
+    .naac-score-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .naac-tab-bar {
+      display: flex;
+      gap: 6px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 18px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .naac-subtab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 16px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .naac-subtab-btn:hover {
+      color: #7c3aed;
+      background: var(--bg-subtle);
+    }
+    .naac-subtab-btn.active {
+      color: #7c3aed;
+      border-bottom: 3px solid #7c3aed;
+      font-weight: 700;
+      background: rgba(124, 58, 237, 0.06);
+    }
+    .naac-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .naac-table th {
+      background: var(--bg-subtle);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .naac-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      vertical-align: top;
+    }
+    .naac-slider-container {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .naac-slider-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .naac-slider-input {
+      width: 100%;
+      accent-color: #7c3aed;
+      cursor: pointer;
+    }
+    [data-theme="dark"] .naac-crit-card {
+      background: var(--bg-surface) !important;
+      border-color: var(--border-color) !important;
+    }
+    [data-theme="dark"] .naac-slider-container {
+      background: var(--bg-surface) !important;
+      border-color: var(--border-color) !important;
+    }
   </style>
 </head>
 <body>
@@ -1877,6 +2167,11 @@
           <span class="nav-label">Scoring Transparency</span>
           <span class="nav-badge" style="background:#ede9fe; color:#6d28d9;">Fair</span>
         </a>
+        <a class="nav-item" data-roles="student" onclick="switchNav('naac-evaluator')">
+          <span class="nav-icon">🏛️</span>
+          <span class="nav-label">Institutional Accreditation (NAAC)</span>
+          <span class="nav-badge" style="background:#f3e8ff; color:#6d28d9; font-weight:700;">A++</span>
+        </a>
 
         <div class="nav-section-title" data-roles="student">Skill &amp; Career Hub</div>
         <a class="nav-item" data-roles="student" onclick="switchNav('learn-modules')">
@@ -1943,6 +2238,11 @@
         <a class="nav-item" data-roles="dean admin" onclick="switchNav('excellence-review')">
           <span class="nav-icon">⭐</span>
           <span class="nav-label">Excellence Review</span>
+        </a>
+        <a class="nav-item" data-roles="dean hod teacher advisor admin recruiter" onclick="switchNav('naac-evaluator')" style="border-left:3px solid #7c3aed; background:rgba(124,58,237,0.06);">
+          <span class="nav-icon">🏛️</span>
+          <span class="nav-label">NAAC &amp; NEP 2020 OS</span>
+          <span class="nav-badge" style="background:#f3e8ff; color:#6d28d9; font-weight:700;">Grade A++ (3.65)</span>
         </a>
 
         <!-- OPERATIONS & ACTION -->
@@ -2060,56 +2360,68 @@
         </div>
 
         <div class="nav-right">
-          <!-- Active Role Pill Indicator -->
-          <div id="active-role-indicator" class="active-role-pill role-pill-advisor" title="Active Platform Perspective">
-            <span id="active-role-icon">👨‍🏫</span>
-            <span id="active-role-badge-text">Faculty Advisor</span>
-          </div>
-
-          <button data-roles="dean admin" class="btn btn-sm" onclick="switchNav('kpmg-showcase')" style="background:linear-gradient(135deg, #4f46e5, #6366f1); color:#ffffff; font-weight:700; border:none; box-shadow:0 2px 10px rgba(99,102,241,0.35); display:flex; align-items:center; gap:6px;">
-            <span>🏆</span> KPMG Showcase &amp; Deck
+          <!-- Quick Tools Group -->
+          <button data-roles="dean admin" class="btn btn-sm" onclick="switchNav('kpmg-showcase')" style="background:linear-gradient(135deg, #4f46e5, #6366f1); color:#ffffff; font-weight:700; border:none; box-shadow:0 2px 10px rgba(99,102,241,0.3); display:flex; align-items:center; gap:6px; border-radius:20px; padding:6px 12px;">
+            <span>🏆</span> KPMG Deck
           </button>
 
-          <button class="btn btn-sm btn-outline" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" style="padding: 4px 8px; font-size: 1rem; margin-right: 4px;">
+          <button class="btn btn-sm btn-outline" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" style="padding: 6px 10px; font-size: 0.95rem; border-radius: 20px;">
             🌓
           </button>
-          <button class="btn btn-sm btn-outline" onclick="toggleAssistantDrawer()">
-            <span>✨</span> Ask CampusPulse
+          
+          <button class="btn btn-sm btn-outline" onclick="toggleAssistantDrawer()" style="border-radius: 20px; padding: 6px 12px;">
+            <span>✨</span> Ask Assistant
           </button>
 
-          <select class="filter-select" id="role-selector" onchange="handleRoleChange(this.value)" title="Switch Active Role Perspective">
-            <option value="dean">🏛️ Prof. Rajesh Gupta (Dean - Superadmin)</option>
-            <option value="hod">👨‍💼 Dr. S. K. Venkatraman (HOD CSE - Admin)</option>
-            <option value="teacher">👩‍🏫 Dr. Ananya Sharma (Teacher / Faculty)</option>
-            <option value="student">🎓 Aarav Sharma (Student under Teacher)</option>
-            <option value="recruiter">💼 Corporate Recruiter (Hiring Partner)</option>
-          </select>
+          <!-- Divider -->
+          <div style="height: 24px; width: 1px; background: var(--border-color); margin: 0 4px;"></div>
 
+          <!-- Role Perspective Selector -->
+          <div style="display:flex; align-items:center; gap:6px;">
+            <select class="role-selector-pill" id="role-selector" onchange="handleRoleChange(this.value)" title="Switch Active Role Perspective">
+              <option value="dean">🏛️ Dean (Superadmin)</option>
+              <option value="hod">👨‍💼 HOD CSE (Admin)</option>
+              <option value="teacher">👩‍🏫 Faculty Mentor</option>
+              <option value="student">🎓 Enrolled Student</option>
+              <option value="recruiter">💼 Corporate Recruiter</option>
+            </select>
+          </div>
+
+          <!-- User Profile Dropdown Badge -->
           <div class="user-profile-wrapper">
-            <div class="user-profile-badge" id="user-profile-badge" onclick="toggleUserDropdown()">
+            <div class="user-profile-badge" id="user-profile-badge" onclick="toggleUserDropdown()" title="Account & Profile Settings">
               <div class="user-avatar" id="nav-user-avatar">AS</div>
-              <span class="user-name-label" id="nav-user-name">Dr. Ananya Sharma</span>
-              <span style="font-size:0.7rem; color:var(--text-muted);">▾</span>
+              <span class="user-name-label" id="nav-user-name">Dr. Ananya</span>
+              <span style="font-size:0.65rem; color:var(--text-dim); margin-left:2px;">▾</span>
             </div>
             <div class="user-profile-dropdown" id="user-profile-dropdown">
-              <div style="display:flex; align-items:center; gap:10px; padding-bottom:8px; border-bottom:1px solid var(--border-color);">
-                <div class="user-avatar" id="dropdown-user-avatar" style="width:36px; height:36px; font-size:0.9rem;">AS</div>
+              <div style="display:flex; align-items:center; gap:12px; padding-bottom:10px; border-bottom:1px solid var(--border-color);">
+                <div class="user-avatar" id="dropdown-user-avatar" style="width:40px; height:40px; font-size:0.95rem;">AS</div>
                 <div style="flex:1; overflow:hidden;">
-                  <div style="font-size:0.85rem; font-weight:700; color:#0f172a;" id="dropdown-user-name">Dr. Ananya Sharma</div>
-                  <div style="font-size:0.72rem; color:var(--text-muted); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;" id="dropdown-user-email">ananya.sharma@campuspulse.edu</div>
+                  <div style="font-size:0.88rem; font-weight:700; color:var(--text-main);" id="dropdown-user-name">Dr. Ananya Sharma</div>
+                  <div style="font-size:0.73rem; color:var(--text-muted); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;" id="dropdown-user-email">ananya.sharma@campuspulse.edu</div>
                 </div>
               </div>
-              <div style="font-size:0.75rem; color:var(--text-muted); padding:4px 0;">
-                <div>Role: <strong style="color:var(--primary-blue);" id="dropdown-user-role">Faculty Advisor (CSE)</strong></div>
-                <div style="margin-top:2px;">Auth: <span style="color:#166534; font-weight:600;" id="dropdown-auth-type">Firebase Authenticated</span></div>
+              <div style="padding:4px 0; font-size:0.75rem; color:var(--text-muted); display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span>Active Role:</span>
+                  <span class="active-role-pill role-pill-advisor" id="active-role-indicator" style="padding:2px 8px; font-size:0.68rem;">
+                    <span id="active-role-icon">👩‍🏫</span>
+                    <span id="active-role-badge-text">Faculty</span>
+                  </span>
+                </div>
+                <div style="margin-top:2px;">Auth: <span style="color:#166534; font-weight:600;" id="dropdown-auth-type">Firebase</span></div>
               </div>
-              <button data-roles="advisor admin" class="btn btn-outline btn-sm" onclick="switchNav('educator-reports'); toggleUserDropdown();" style="width:100%; justify-content:center;">📈 My Educator Profile</button>
-              <button class="btn btn-outline btn-sm" onclick="openFirebaseConfigModal(); toggleUserDropdown();" style="width:100%; justify-content:center;">⚙️ Firebase Credentials</button>
-              <button class="btn btn-sm" onclick="handleFirebaseSignOut()" style="width:100%; justify-content:center; background:#fee2e2; color:#991b1b; border:1px solid #fecaca; margin-top:2px;">🚪 Sign Out</button>
+              <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+                <button data-roles="advisor admin" class="btn btn-outline btn-sm" onclick="switchNav('educator-reports'); toggleUserDropdown();" style="width:100%; justify-content:flex-start;">📈 My Educator Profile</button>
+                <button class="btn btn-outline btn-sm" onclick="openFirebaseConfigModal(); toggleUserDropdown();" style="width:100%; justify-content:flex-start;">⚙️ Firebase Credentials</button>
+                <button class="btn btn-sm" onclick="handleFirebaseSignOut()" style="width:100%; justify-content:flex-start; background:#fef2f2; color:#991b1b; border:1px solid #fee2e2; margin-top:2px;">🚪 Sign Out</button>
+              </div>
             </div>
           </div>
         </div>
       </header>
+
 
       <!-- CONTENT CONTAINER -->
       <main class="main-content">
@@ -2119,78 +2431,93 @@
           <!-- VIEW 1: ADVISOR ACTION LIST / EDUCATOR SESSIONS -->
           <!-- ════════════════════════════════════════════════════════════════════ -->
           <div id="view-action-list" class="tab-view active">
-            <div class="breadcrumbs"><span>Home</span> / <span class="current">Advisor Action List</span></div>
+            <div class="breadcrumbs"><span>Home</span> / <span>Campus Pulse</span> / <span class="current">Educator &amp; Advisor Workstation</span></div>
 
             <div class="page-header-row">
-              <div class="page-title">
-                <span>Educator Session</span>
-                <select class="filter-select" style="font-size:0.9rem; font-weight:600; margin-left:8px;" onchange="loadActionList()">
-                  <option>Parul Trainers (CSE Dept)</option>
-                  <option>KRM Trainers</option>
-                </select>
+              <div>
+                <div class="page-title" style="color:var(--text-main); font-size:1.6rem; letter-spacing:-0.02em;">
+                  <span>Educator &amp; Advisor Dashboard</span>
+                  <span class="brand-tag" style="font-size:0.72rem; padding:3px 8px; background:var(--bg-subtle); color:var(--primary-blue); font-weight:700; border-radius:20px; border:1px solid var(--primary-blue-border);">Compassionate Guidance OS</span>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">
+                  Active Cohort: <strong>Computer Science &amp; Engineering</strong> &bull; Proactive student scaffolding and early relational outreach
+                </div>
               </div>
               <div class="header-actions-group">
-                <button class="btn btn-outline" onclick="loadActionList()">🔄 Refresh</button>
+                <select class="filter-select" style="font-size:0.84rem; font-weight:600; padding:8px 12px;" onchange="loadActionList()">
+                  <option>Parul Trainers (CSE Dept)</option>
+                  <option>KRM Trainers (Core Faculty)</option>
+                </select>
+                <button class="btn btn-outline" onclick="loadActionList()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                  Sync Live Roster
+                </button>
                 <div class="btn-split">
-                  <button onclick="openInterventionModal()">+ Log A Session</button>
+                  <button onclick="openInterventionModal()">+ Log 1:1 Session</button>
                   <button class="btn-split-arrow" onclick="openInterventionModal()">▾</button>
                 </div>
               </div>
             </div>
 
             <div class="alert-banner" id="alert-banner-box">
-              <div>
-                <strong>⚠️ Priority Attention:</strong> 3 students currently triggered hard-floor criteria (Attendance &lt; 57% or CGPA &lt; 4.7). <a onclick="filterByHardFloor()">Click here to review pinned records</a>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:1.2rem;">🤝</span>
+                <div>
+                  <strong>Check-in Outreach Recommended:</strong> 3 students currently triggered early threshold review criteria (Attendance &lt; 57% or CGPA &lt; 4.7).
+                  <a onclick="filterByHardFloor()" style="margin-left:6px; font-weight:700;">Open Case Reviews &rarr;</a>
+                </div>
               </div>
-              <span style="cursor:pointer; color:#a16207;" onclick="document.getElementById('alert-banner-box').style.display='none'">✕</span>
+              <span style="cursor:pointer; color:#b45309; font-weight:700; padding:2px 6px;" onclick="document.getElementById('alert-banner-box').style.display='none'">✕</span>
             </div>
+
 
             <div class="kpi-row">
               <div class="kpi-card">
-                <div class="kpi-icon-circle red">⚠️</div>
+                <div class="kpi-icon-circle amber" style="background:#fef3c7; color:#d97706; border-color:#fde68a;">🤝</div>
                 <div class="kpi-info">
-                  <div class="kpi-label">Priority Support</div>
-                  <div class="kpi-value" id="kpi-ps">--</div>
+                  <div class="kpi-label">Needs Support</div>
+                  <div class="kpi-value" id="kpi-ps" style="color:#d97706;">--</div>
                   <div class="kpi-delta-row">
-                    <span class="kpi-delta-chip delta-rose">● Critical Roster</span>
-                    <span class="kpi-context-line" id="kpi-ps-context">3 triggered hard-floor criteria</span>
+                    <span class="kpi-delta-chip" style="background:#fef3c7; color:#b45309; border:1px solid #fde68a;">● Scaffolding Needed</span>
+                    <span class="kpi-context-line" id="kpi-ps-context">3 students under threshold</span>
                   </div>
                 </div>
               </div>
               <div class="kpi-card">
-                <div class="kpi-icon-circle amber">🔍</div>
+                <div class="kpi-icon-circle blue" style="background:#eff6ff; color:#004ac6; border-color:#bfdbfe;">💬</div>
                 <div class="kpi-info">
-                  <div class="kpi-label">Review Band</div>
-                  <div class="kpi-value" id="kpi-rev">--</div>
+                  <div class="kpi-label">Check-in Recommended</div>
+                  <div class="kpi-value" id="kpi-rev" style="color:#004ac6;">--</div>
                   <div class="kpi-delta-row">
-                    <span class="kpi-delta-chip delta-amber">● Active Queue</span>
-                    <span class="kpi-context-line">Bi-weekly advisor triage</span>
+                    <span class="kpi-delta-chip" style="background:#eff6ff; color:#004ac6; border:1px solid #bfdbfe;">● Bi-weekly Triage</span>
+                    <span class="kpi-context-line">Conversational outreach queue</span>
                   </div>
                 </div>
               </div>
               <div class="kpi-card">
-                <div class="kpi-icon-circle blue">👀</div>
+                <div class="kpi-icon-circle" style="background:#f3e8ff; color:#712ae2; border:1px solid #ddd6fe;">💜</div>
                 <div class="kpi-info">
-                  <div class="kpi-label">Watchlist</div>
-                  <div class="kpi-value" id="kpi-wl">--</div>
+                  <div class="kpi-label">Human Review Only</div>
+                  <div class="kpi-value" id="kpi-wl" style="color:#712ae2;">--</div>
                   <div class="kpi-delta-row">
-                    <span class="kpi-delta-chip delta-blue">● Monitored</span>
-                    <span class="kpi-context-line">Early indicator variance</span>
+                    <span class="kpi-delta-chip" style="background:#f3e8ff; color:#712ae2; border:1px solid #ddd6fe;">● No Automated Action</span>
+                    <span class="kpi-context-line">Advisor discretion reserved</span>
                   </div>
                 </div>
               </div>
               <div class="kpi-card">
-                <div class="kpi-icon-circle green">✅</div>
+                <div class="kpi-icon-circle green" style="background:#ecfdf5; color:#059669; border-color:#a7f3d0;">🌿</div>
                 <div class="kpi-info">
-                  <div class="kpi-label">On Track</div>
-                  <div class="kpi-value" id="kpi-ot">--</div>
+                  <div class="kpi-label">Stable Progress</div>
+                  <div class="kpi-value" id="kpi-ot" style="color:#059669;">--</div>
                   <div class="kpi-delta-row">
-                    <span class="kpi-delta-chip delta-emerald">● Stable Pace</span>
-                    <span class="kpi-context-line">Above academic &amp; placement baselines</span>
+                    <span class="kpi-delta-chip" style="background:#ecfdf5; color:#059669; border:1px solid #a7f3d0;">● Self-Sustaining</span>
+                    <span class="kpi-context-line">Consistent placement trajectory</span>
                   </div>
                 </div>
               </div>
             </div>
+
 
             <div style="display:grid; grid-template-columns: 2.2fr 1fr; gap:20px; align-items:start;">
               <div>
@@ -2237,33 +2564,48 @@
                 </div>
               </div>
 
-              <div>
+              <div style="display:flex; flex-direction:column; gap:16px;">
                 <!-- Campus Pulse: Department Health Heatmap Widget -->
                 <div class="dept-health-card card">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
                     <div>
-                      <h4 style="font-size:0.88rem; font-weight:700; color:#0f172a; margin:0;">Campus Pulse — Department Health</h4>
-                      <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Mean success score by academic department</div>
+                      <h4 style="font-size:0.92rem; font-weight:700; color:var(--text-main); margin:0;">Department Telemetry</h4>
+                      <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Cohort success averages</div>
                     </div>
-                    <span class="brand-tag" style="font-size:0.62rem;">Live Pulse</span>
+                    <span class="brand-tag" style="font-size:0.65rem; background:#ecfdf5; color:#059669; border:1px solid #a7f3d0; border-radius:12px; padding:2px 8px; font-weight:700;">Live Sensor</span>
                   </div>
-                  <div id="dept-health-heatmap-container" style="display:flex; flex-direction:column; gap:6px;">
-                    <div style="font-size:0.75rem; color:var(--text-muted); padding:8px 0;">Loading department telemetry...</div>
+                  <div id="dept-health-heatmap-container" style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="font-size:0.78rem; color:var(--text-muted); padding:8px 0;">Loading department telemetry...</div>
                   </div>
-                  <div style="margin-top:10px; font-size:0.68rem; color:#64748b; border-top:1px solid var(--border-color); padding-top:6px; display:flex; justify-content:space-between;">
-                    <span>Active Cohort: CSE (N=130)</span>
-                    <span style="color:var(--text-muted);">Real-time</span>
+                  <div style="margin-top:14px; font-size:0.72rem; color:var(--text-muted); border-top:1px solid var(--border-color); padding-top:8px; display:flex; justify-content:space-between;">
+                    <span>Active Cohort: <strong>CSE (N=130)</strong></span>
+                    <span style="color:#059669; font-weight:600;">✓ Synced</span>
                   </div>
                 </div>
 
-                <div class="card" style="padding:16px;">
-                  <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); margin-bottom:8px;">SCHEDULED CHECK-IN</div>
-                  <div style="font-size:0.8rem; color:#334155; padding:8px; background:#f8fafc; border-radius:6px; border-left:3px solid var(--primary-blue);">
-                    <strong>Aarav Sharma</strong> (10:30 AM)<br>
-                    <span style="font-size:0.72rem; color:var(--text-muted);">Coding Practice Clinic Discussion</span>
+                <!-- Stitch 1:1 Check-in Touchpoint Card -->
+                <div class="card" style="border-left:4px solid var(--primary-accent);">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <span style="font-size:0.74rem; font-weight:700; color:var(--primary-blue); text-transform:uppercase; letter-spacing:0.04em;">Next Scheduled 1:1</span>
+                    <span style="font-size:0.7rem; color:var(--text-muted); background:var(--bg-subtle); padding:2px 6px; border-radius:4px;">10:30 AM Today</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                    <div style="width:38px; height:38px; border-radius:10px; background:#eff6ff; color:#004ac6; font-weight:800; font-size:0.9rem; display:flex; align-items:center; justify-content:center; border:1px solid #bfdbfe;">AS</div>
+                    <div>
+                      <div style="font-weight:700; font-size:0.9rem; color:var(--text-main);">Aarav Sharma</div>
+                      <div style="font-size:0.74rem; color:var(--text-muted);">CS 301 Catch-up Agreement &bull; CSE 2029</div>
+                    </div>
+                  </div>
+                  <div style="padding:10px 12px; background:var(--bg-subtle); border-radius:8px; font-size:0.78rem; color:#334155; margin-bottom:12px; line-height:1.4;">
+                    <strong>Advising Agenda:</strong> Review sliding window problem set and confirm attendance reinstatement.
+                  </div>
+                  <div style="display:flex; gap:8px;">
+                    <button class="btn btn-primary btn-sm" style="flex:1; justify-content:center;" onclick="openInterventionModal('stu_1107c6563069')">Open Case Notes</button>
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Rescheduled check-in calendar invite')">Reschedule</button>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -2626,6 +2968,419 @@
                       <tr><td>K-Sum &amp; Hash Map Optimization Techniques</td><td>26:40</td><td>435</td><td><span style="color:#166534; font-weight:700;">93.0%</span></td><td><button class="btn btn-outline btn-sm" onclick="showToast('Playing video preview')">Preview</button></td></tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ════════════════════════════════════════════════════════════════════ -->
+          <!-- VIEW: NAAC ACCREDITATION & NEP 2020 PLATFORM (Our College Data) -->
+          <!-- ════════════════════════════════════════════════════════════════════ -->
+          <div id="view-naac-evaluator" class="tab-view">
+            <div class="breadcrumbs"><span>Home</span> / <span>Quality &amp; Accreditation</span> / <span class="current">NAAC &amp; NEP 2020 OS</span></div>
+
+            <!-- Page Title Row -->
+            <div class="page-header-row" style="margin-bottom:18px; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+              <div>
+                <div class="page-title" style="display:flex; align-items:center; gap:10px;">
+                  <span>NAAC Accreditation &amp; NEP 2020 Platform</span>
+                  <span class="subtitle-tag" style="background:#f3e8ff; color:#7c3aed; font-weight:700; border:1px solid #ddd6fe;">KRMU SOET</span>
+                </div>
+                <div style="font-size:0.83rem; color:var(--text-muted); margin-top:3px;">
+                  K.R. Mangalam University • School of Engineering &amp; Technology • AISHE: <strong style="color:var(--text-main);">U-0162</strong> • Cycle 2 Assessment (2022–2027)
+                </div>
+              </div>
+
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button class="btn btn-outline btn-sm" onclick="loadNaacPlatform(true)">
+                  <span>🔄</span> Refresh Telemetry
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="switchNaacSubTab('simulator')">
+                  <span>🧪</span> What-If Simulator
+                </button>
+                <button class="btn btn-primary btn-sm" onclick="printOrExportNaacSsr()" style="background:#7c3aed; border-color:#6d28d9;">
+                  <span>📄</span> Download SSR / AQAR Dossier
+                </button>
+              </div>
+            </div>
+
+            <!-- Accreditation Master Hero Card -->
+            <div class="naac-hero-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; position:relative; z-index:2;">
+                <div>
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                    <div style="width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-size:1.3rem; border:1px solid rgba(255,255,255,0.25);">
+                      🏛️
+                    </div>
+                    <div>
+                      <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.85; font-weight:700;">NAAC Revised Accreditation Framework (RAF 2024–2026)</div>
+                      <div style="font-size:1.25rem; font-weight:800; letter-spacing:-0.02em;">K.R. Mangalam University — School of Engineering &amp; Technology</div>
+                    </div>
+                  </div>
+
+                  <div style="display:flex; align-items:baseline; gap:16px; margin-top:14px; flex-wrap:wrap;">
+                    <div style="display:flex; align-items:baseline; gap:6px;">
+                      <span style="font-size:2.8rem; font-weight:900; line-height:1; color:#ffffff;" id="naac-hero-grade">A++</span>
+                      <span style="font-size:1.15rem; opacity:0.9; font-weight:700;">Grade</span>
+                    </div>
+                    <div style="height:36px; width:1px; background:rgba(255,255,255,0.25);"></div>
+                    <div>
+                      <div style="font-size:0.75rem; opacity:0.8; font-weight:600;">Projected Institutional CGPA</div>
+                      <div style="font-size:1.45rem; font-weight:800; color:#fde047;" id="naac-hero-cgpa-display">3.65 <span style="font-size:0.9rem; opacity:0.8; font-weight:600; color:#ffffff;">/ 4.00</span></div>
+                    </div>
+                    <div style="height:36px; width:1px; background:rgba(255,255,255,0.25);"></div>
+                    <div>
+                      <div style="font-size:0.75rem; opacity:0.8; font-weight:600;">Status &amp; Maturity Level</div>
+                      <div style="font-size:0.92rem; font-weight:700; color:#86efac;" id="naac-hero-status-display">Accredited with Distinction • Level 4 (National Eminence)</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Quick Metrics Strip -->
+                <div style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); border-radius:12px; padding:14px 18px; display:grid; grid-template-columns:repeat(2, minmax(130px, 1fr)); gap:12px;">
+                  <div>
+                    <div style="font-size:0.7rem; opacity:0.8;">Evaluated Students</div>
+                    <div style="font-size:1.1rem; font-weight:800;" id="naac-hero-students-display">469 Active</div>
+                    <div style="font-size:0.68rem; opacity:0.75;">7 Batches (AIML &amp; CSE)</div>
+                  </div>
+                  <div>
+                    <div style="font-size:0.7rem; opacity:0.8;">NEP 2020 Compliance</div>
+                    <div style="font-size:1.1rem; font-weight:800; color:#6ee7b7;" id="naac-hero-nep-display">94.8%</div>
+                    <div style="font-size:0.68rem; opacity:0.75;">Stage 4 (Quality Audited)</div>
+                  </div>
+                  <div>
+                    <div style="font-size:0.7rem; opacity:0.8;">Mentor-Mentee Ratio</div>
+                    <div style="font-size:1.1rem; font-weight:800;">1:18</div>
+                    <div style="font-size:0.68rem; opacity:0.75;">26 Faculty Mentors</div>
+                  </div>
+                  <div>
+                    <div style="font-size:0.7rem; opacity:0.8;">SSR DVA Readiness</div>
+                    <div style="font-size:1.1rem; font-weight:800; color:#fde047;">98.2%</div>
+                    <div style="font-size:0.68rem; opacity:0.75;">Peer-Team Audit Ready</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Platform Sub-Navigation Tabs -->
+            <div class="naac-tab-bar">
+              <button class="naac-subtab-btn active" id="btn-naac-subtab-overview" onclick="switchNaacSubTab('overview')">
+                <span>📊</span> Executive Overview
+              </button>
+              <button class="naac-subtab-btn" id="btn-naac-subtab-criteria" onclick="switchNaacSubTab('criteria')">
+                <span>🏛️</span> 7 NAAC Criteria &amp; KIs
+              </button>
+              <button class="naac-subtab-btn" id="btn-naac-subtab-nep" onclick="switchNaacSubTab('nep')">
+                <span>🇮🇳</span> NEP 2020 Matrix (8 Pillars)
+              </button>
+              <button class="naac-subtab-btn" id="btn-naac-subtab-bestpractices" onclick="switchNaacSubTab('bestpractices')">
+                <span>⭐</span> Best Practices (Criterion 7.2)
+              </button>
+              <button class="naac-subtab-btn" id="btn-naac-subtab-simulator" onclick="switchNaacSubTab('simulator')">
+                <span>🧪</span> What-If Grade Simulator
+              </button>
+              <button class="naac-subtab-btn" id="btn-naac-subtab-ssr" onclick="switchNaacSubTab('ssr')">
+                <span>📋</span> SSR Audit Dossier
+              </button>
+            </div>
+
+            <!-- ── SUBVIEW 1: EXECUTIVE OVERVIEW ── -->
+            <div id="naac-subview-overview" class="naac-subview">
+              <!-- KPI Row -->
+              <div class="kpi-row" style="margin-bottom:18px;">
+                <div class="kpi-card">
+                  <div class="kpi-icon-circle blue">📐</div>
+                  <div class="kpi-info">
+                    <div class="kpi-label">Institutional CGPA</div>
+                    <div class="kpi-value" id="naac-kpi-cgpa">3.65 <span style="font-size:0.8rem; color:var(--text-muted);">/ 4.00</span></div>
+                    <div style="font-size:0.72rem; color:#166534; font-weight:700; margin-top:2px;">Grade A++ (Accredited)</div>
+                  </div>
+                </div>
+
+                <div class="kpi-card">
+                  <div class="kpi-icon-circle green">📈</div>
+                  <div class="kpi-info">
+                    <div class="kpi-label">Quantitative (QnM) Score</div>
+                    <div class="kpi-value">3.66 <span style="font-size:0.8rem; color:var(--text-muted);">/ 4.00</span></div>
+                    <div style="font-size:0.72rem; color:#166534; font-weight:700; margin-top:2px;">91.5% Attainment</div>
+                  </div>
+                </div>
+
+                <div class="kpi-card">
+                  <div class="kpi-icon-circle amber">📝</div>
+                  <div class="kpi-info">
+                    <div class="kpi-label">Qualitative (QlM) Score</div>
+                    <div class="kpi-value">3.61 <span style="font-size:0.8rem; color:var(--text-muted);">/ 4.00</span></div>
+                    <div style="font-size:0.72rem; color:#166534; font-weight:700; margin-top:2px;">Peer-Review Verified</div>
+                  </div>
+                </div>
+
+                <div class="kpi-card">
+                  <div class="kpi-icon-circle purple">🇮🇳</div>
+                  <div class="kpi-info">
+                    <div class="kpi-label">NEP 2020 Compliance</div>
+                    <div class="kpi-value">94.8%</div>
+                    <div style="font-size:0.72rem; color:#7c3aed; font-weight:700; margin-top:2px;">ABC + OBE + Formative</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Charts Row: Radar + Telemetry -->
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:20px;">
+                <div class="card">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <div>
+                      <h3 style="font-size:0.95rem; font-weight:700;">NAAC 7-Criteria Radar: KRMU vs Benchmark</h3>
+                      <div style="font-size:0.74rem; color:var(--text-muted);">Comparison across all 7 criteria on a 4.00 grade point scale</div>
+                    </div>
+                    <span class="naac-score-pill" style="background:#ecfdf5; color:#047857;">Grade A++ Range</span>
+                  </div>
+                  <div style="height:270px; position:relative;">
+                    <canvas id="naacRadarChart"></canvas>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <div>
+                      <h3 style="font-size:0.95rem; font-weight:700;">Live College Telemetry Signals (KRMU Database)</h3>
+                      <div style="font-size:0.74rem; color:var(--text-muted);">Derived dynamically from CampusPulse database &amp; weekly metrics</div>
+                    </div>
+                    <span class="naac-score-pill" style="background:#eff6ff; color:#1d4ed8;">Live DB Connected</span>
+                  </div>
+                  <div style="height:270px; position:relative;">
+                    <canvas id="naacTelemetryChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live College Data Highlight Ribbon -->
+              <div class="card" style="margin-bottom:22px; background:linear-gradient(to right, #f8fafc, #eff6ff); border-left:4px solid var(--primary-blue);">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:1.6rem;">🏫</span>
+                    <div>
+                      <div style="font-size:0.88rem; font-weight:800; color:#0f172a;">Institutional Dataset Context — K.R. Mangalam University</div>
+                      <div style="font-size:0.76rem; color:#475569;">
+                        Tracking <strong>469 students</strong> across Section C, Section D, and AIML batches with <strong>887 multi-week metric snapshots</strong> and 26 faculty mentors.
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display:flex; gap:10px;">
+                    <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:6px 12px; font-size:0.75rem; text-align:center;">
+                      <div style="color:var(--text-muted);">Active Patents</div>
+                      <div style="font-weight:800; color:#0f172a;">28 Filed / 8 Granted</div>
+                    </div>
+                    <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:6px 12px; font-size:0.75rem; text-align:center;">
+                      <div style="color:var(--text-muted);">Incubated Startups</div>
+                      <div style="font-weight:800; color:#0f172a;">14 at KRMU E-Cell</div>
+                    </div>
+                    <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:6px 12px; font-size:0.75rem; text-align:center;">
+                      <div style="color:var(--text-muted);">Corporate MoUs</div>
+                      <div style="font-weight:800; color:#0f172a;">24 Active</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 7 Criteria Executive Grid -->
+              <h3 style="font-size:1rem; font-weight:800; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+                <span>🏛️</span> NAAC RAF 7 Criteria Attainment Summary
+              </h3>
+              <div class="naac-grid-7" id="naac-criteria-grid">
+                <!-- Dynamically injected via renderNaacOverview -->
+              </div>
+            </div>
+
+            <!-- ── SUBVIEW 2: 7 CRITERIA & KEY INDICATORS (RAF) ── -->
+            <div id="naac-subview-criteria" class="naac-subview" style="display:none;">
+              <div class="card" style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+                  <div>
+                    <h3 style="font-size:0.95rem; font-weight:800;">NAAC Criteria Key Indicators (KIs) &amp; Documentary Evidence</h3>
+                    <div style="font-size:0.76rem; color:var(--text-muted);">Select a criterion to view specific metrics, formulas, institutional KPIs, and evidence files.</div>
+                  </div>
+                  <div style="display:flex; gap:6px; flex-wrap:wrap;" id="naac-crit-selector-pills">
+                    <!-- Dynamic criterion pill buttons -->
+                  </div>
+                </div>
+
+                <div id="naac-criterion-detail-container">
+                  <!-- Injected via renderSelectedCriterionDetail -->
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUBVIEW 3: NEP 2020 STRATEGIC FRAMEWORK MATRIX ── -->
+            <div id="naac-subview-nep" class="naac-subview" style="display:none;">
+              <div class="card" style="margin-bottom:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                  <div>
+                    <h3 style="font-size:0.98rem; font-weight:800; color:#0f172a;">National Education Policy (NEP 2020) Institutional Matrix</h3>
+                    <div style="font-size:0.76rem; color:var(--text-muted);">Compliance audit across 8 key mandates required for NAAC SSR Chapter 2</div>
+                  </div>
+                  <span class="naac-score-pill" style="background:#ecfdf5; color:#047857; font-size:0.8rem;">94.8% Institutional Compliance</span>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px;" id="naac-nep-pillars-grid">
+                  <!-- Dynamically populated via renderNaacNepMatrix -->
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUBVIEW 4: BEST PRACTICES (CRITERION 7.2 SHOWCASE) ── -->
+            <div id="naac-subview-bestpractices" class="naac-subview" style="display:none;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:20px;">
+                <!-- Best Practice 1 -->
+                <div class="card" style="border-top:4px solid #6366f1;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                    <span style="background:#e0e7ff; color:#4338ca; padding:3px 8px; border-radius:4px; font-size:0.72rem; font-weight:700;">BEST PRACTICE I</span>
+                    <span class="naac-score-pill" style="background:#ecfdf5; color:#047857;">NAAC Score: 3.95 / 4.00</span>
+                  </div>
+                  <h3 style="font-size:1.02rem; font-weight:800; margin-bottom:10px; color:#1e1b4b;">CampusPulse: Deterministic Student Success &amp; Closed-Loop Intervention OS</h3>
+                  
+                  <div style="font-size:0.78rem; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+                    <strong>1. Objectives of the Practice:</strong> Transition higher education from passive backward-looking dashboards to an active, deterministic decision-support operating system. Ensure early detection of learning drag within 30 seconds per student without black-box hallucinations.
+                  </div>
+
+                  <div style="font-size:0.78rem; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+                    <strong>2. The Context:</strong> Traditional universities suffer from fragmented data silos across LMS logs, attendance registers, and placement cells. Vulnerable students often fall through the cracks until end-semester failure.
+                  </div>
+
+                  <div style="font-size:0.78rem; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+                    <strong>3. The Practice:</strong> Pure Python AST mathematical engine evaluating 6 normalized indicators (Academics, Attendance, Placement, LMS, Engagement, Skills). Enforces 3 non-negotiable hard floors and 3-week EWMA momentum recovery loops.
+                  </div>
+
+                  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px; font-size:0.76rem; color:#1e293b;">
+                    <strong>🏆 Evidence of Success:</strong> 469 evaluated students tracked; 92.5% timely intervention resolution; zero arbitrary black-box penalties; placement readiness quotient lifted from 61.2% to 84.7%.
+                  </div>
+                </div>
+
+                <!-- Best Practice 2 -->
+                <div class="card" style="border-top:4px solid #059669;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                    <span style="background:#d1fae5; color:#065f46; padding:3px 8px; border-radius:4px; font-size:0.72rem; font-weight:700;">BEST PRACTICE II</span>
+                    <span class="naac-score-pill" style="background:#ecfdf5; color:#047857;">NAAC Score: 3.80 / 4.00</span>
+                  </div>
+                  <h3 style="font-size:1.02rem; font-weight:800; margin-bottom:10px; color:#064e3b;">Industry-Embedded Capstone Sprints &amp; Live Coding Telemetry</h3>
+                  
+                  <div style="font-size:0.78rem; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+                    <strong>1. Objectives of the Practice:</strong> Bridge the university-industry readiness gap by immersing students into production-ready software engineering, live code sandboxes, and corporate mentorship sprints.
+                  </div>
+
+                  <div style="font-size:0.78rem; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+                    <strong>2. The Context:</strong> Rote coding assessments fail to prepare students for tech interviews. Students need continuous code studio practice with automated complexity and anti-plagiarism verification.
+                  </div>
+
+                  <div style="font-size:0.78rem; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+                    <strong>3. The Practice:</strong> 24 active technology MoUs (AWS Academy, RedHat, ByteXL). Students deploy capstone projects evaluated by industry CTOs; integrated automated coding studio tracks execution time, syntax errors, and algorithmic efficiency.
+                  </div>
+
+                  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px; font-size:0.76rem; color:#1e293b;">
+                    <strong>🏆 Evidence of Success:</strong> Average CTC increased to ₹7.2 LPA (highest ₹36 LPA); Smart India Hackathon national winners; 96.2% student participation in corporate capstones.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUBVIEW 5: WHAT-IF GRADE SIMULATOR ── -->
+            <div id="naac-subview-simulator" class="naac-subview" style="display:none;">
+              <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px;">
+                <div class="card">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                    <div>
+                      <h3 style="font-size:0.95rem; font-weight:800;">Accreditation Sensitivity Sandbox</h3>
+                      <div style="font-size:0.75rem; color:var(--text-muted);">Adjust individual Criteria grade points (0.00 – 4.00) to simulate institutional CGPA and Grade trajectory.</div>
+                    </div>
+                    <button class="btn btn-outline btn-sm" onclick="resetNaacSimulation()">Reset to Baseline</button>
+                  </div>
+
+                  <div id="naac-simulator-sliders">
+                    <!-- Populated dynamically via renderNaacSimulator -->
+                  </div>
+                </div>
+
+                <!-- Simulation Result Card -->
+                <div class="card" style="display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(to bottom, #ffffff, #f8fafc);">
+                  <div>
+                    <h3 style="font-size:0.95rem; font-weight:800; margin-bottom:6px;">Projected Simulated Outcome</h3>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:18px;">Mathematical model based on NAAC RAF weighted formula</div>
+
+                    <div style="text-align:center; padding:24px 16px; background:var(--bg-subtle); border-radius:12px; border:1px solid var(--border-color); margin-bottom:18px;">
+                      <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:700;">Simulated Grade</div>
+                      <div style="font-size:3.2rem; font-weight:900; color:#7c3aed; line-height:1.1;" id="naac-sim-grade">A++</div>
+                      <div style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:4px;" id="naac-sim-cgpa">3.65 <span style="font-size:0.85rem; color:var(--text-muted);">/ 4.00</span></div>
+                      <div style="font-size:0.8rem; font-weight:700; color:#166534; margin-top:4px;" id="naac-sim-status">Accredited with Distinction</div>
+                      <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;" id="naac-sim-maturity">Level 4 (Institution of National Eminence)</div>
+                    </div>
+
+                    <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+                      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border-color);">
+                        <span>Baseline CGPA:</span>
+                        <strong style="color:var(--text-main);">3.65</strong>
+                      </div>
+                      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border-color);">
+                        <span>Delta Impact:</span>
+                        <strong id="naac-sim-delta" style="color:#166534;">+0.00</strong>
+                      </div>
+                      <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border-color);">
+                        <span>Total Weighted Points:</span>
+                        <strong id="naac-sim-weighted-points">3650 / 4000</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="margin-top:20px;">
+                    <button class="btn btn-primary" style="width:100%; background:#7c3aed; border-color:#6d28d9;" onclick="showToast('✅ Target scenario saved to IQAC Planning Dossier')">
+                      Save as Strategic Quality Target
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUBVIEW 6: SSR / AQAR AUDIT DOSSIER ── -->
+            <div id="naac-subview-ssr" class="naac-subview" style="display:none;">
+              <div class="card" id="naac-ssr-printable-area" style="background:#ffffff; padding:28px 32px; border:1px solid #cbd5e1; box-shadow:0 4px 16px rgba(0,0,0,0.04);">
+                <!-- Official Header -->
+                <div style="text-align:center; border-bottom:2px solid #0f172a; padding-bottom:18px; margin-bottom:20px;">
+                  <div style="font-size:1.3rem; font-weight:900; letter-spacing:-0.02em; color:#0f172a; text-transform:uppercase;">K.R. Mangalam University</div>
+                  <div style="font-size:0.86rem; font-weight:700; color:#475569;">School of Engineering &amp; Technology (SOET)</div>
+                  <div style="font-size:0.75rem; color:#64748b;">Sohna Road, Gurugram, Delhi-NCR — 122103 | AISHE Code: U-0162</div>
+                  <div style="display:inline-block; margin-top:8px; background:#f1f5f9; padding:4px 14px; border-radius:20px; font-size:0.75rem; font-weight:800; color:#334155; border:1px solid #e2e8f0;">
+                    Annual Quality Assurance Report (AQAR) &amp; Institutional Self Study Report (SSR) Dossier
+                  </div>
+                </div>
+
+                <!-- Executive Summary -->
+                <div style="margin-bottom:20px;">
+                  <h4 style="font-size:0.88rem; font-weight:800; text-transform:uppercase; color:#0f172a; margin-bottom:6px; border-left:3px solid #7c3aed; padding-left:8px;">Executive Summary</h4>
+                  <p style="font-size:0.8rem; line-height:1.6; color:#334155;">
+                    K.R. Mangalam University (SOET) operates under a robust Outcome-Based Education (OBE) framework, deterministic continuous student-success monitoring (CampusPulse OS), and a vibrant innovation ecosystem comprising 14 incubated startups and 28 filed patents. The institution strictly adheres to the National Education Policy (NEP 2020) with 98.4% Academic Bank of Credits (ABC) seeding, a four-year multiple entry/exit curriculum, and a 100% continuous formative evaluation system.
+                  </p>
+                </div>
+
+                <!-- Summary Scores Table -->
+                <div style="margin-bottom:24px;">
+                  <h4 style="font-size:0.88rem; font-weight:800; text-transform:uppercase; color:#0f172a; margin-bottom:10px; border-left:3px solid #7c3aed; padding-left:8px;">Criterion-wise Weighted Grade Points</h4>
+                  <table class="naac-table" id="naac-ssr-table">
+                    <!-- Dynamic SSR table rows -->
+                  </table>
+                </div>
+
+                <!-- Institutional Endorsement Signatures -->
+                <div style="display:flex; justify-content:space-between; margin-top:36px; padding-top:24px; border-top:1px dashed #cbd5e1;">
+                  <div style="text-align:center;">
+                    <div style="font-weight:800; font-size:0.82rem; color:#0f172a;">Dr. S. K. Venkatraman</div>
+                    <div style="font-size:0.72rem; color:#475569;">Coordinator, IQAC</div>
+                    <div style="font-size:0.68rem; color:#94a3b8;">Digitally Certified via CampusPulse AST</div>
+                  </div>
+                  <div style="text-align:center;">
+                    <div style="font-weight:800; font-size:0.82rem; color:#0f172a;">Prof. (Dr.) Rajesh Gupta</div>
+                    <div style="font-size:0.72rem; color:#475569;">Director, IQAC &amp; Dean SOET</div>
+                    <div style="font-size:0.68rem; color:#94a3b8;">Seal of the University</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4663,29 +5418,27 @@ Available Nimbus Shell commands:
       if (btn) btn.innerText = 'Authenticating with Firebase...';
 
       try {
-        if (fbAuthInstance && fbAuthInstance.signInWithEmailAndPassword) {
-          try {
-            await fbAuthInstance.signInWithEmailAndPassword(email, pwd);
-          } catch (fbErr) {
-            console.log('Firebase cloud fallback to deterministic auth session');
-          }
+        if (!fbAuthInstance || !fbAuthInstance.signInWithEmailAndPassword) {
+          throw new Error('Firebase Auth is not initialized. Check your credentials or internet.');
         }
 
+        const fbUserCredential = await fbAuthInstance.signInWithEmailAndPassword(email, pwd);
+        const fbUser = fbUserCredential.user;
+
+        const isStudent = email.includes('student') || email.includes('aarav') || !!email.match(/[0-9]{4}/);
+        const isAdmin = email.includes('rajesh') || email.includes('admin') || email.includes('dean');
+
         const userObj = {
-          uid: 'fb_' + Math.random().toString(36).substring(2, 10),
-          email: email,
-          displayName: email.includes('ananya') ? 'Dr. Ananya Sharma' :
-                       email.includes('rajesh') ? 'Prof. Rajesh Gupta' :
-                       email.includes('aarav') ? 'Aarav Sharma' :
-                       email.includes('parul') ? 'Parul Lead Trainer' : 'Faculty Member',
-          role: email.includes('rajesh') || email.includes('admin') ? 'admin' :
-                email.includes('aarav') || email.includes('student') ? 'student' : 'advisor',
-          roleTitle: email.includes('rajesh') || email.includes('admin') ? 'Dean & Placement Director' :
-                     email.includes('aarav') || email.includes('student') ? 'Student (2026-CSE-042)' : 'Lead Faculty Advisor (CSE)',
-          avatarInitials: email.includes('ananya') ? 'AS' :
-                          email.includes('rajesh') ? 'RG' :
-                          email.includes('aarav') ? 'AS' :
-                          email.includes('parul') ? 'PT' : 'CP',
+          uid: fbUser ? fbUser.uid : ('fb_' + Math.random().toString(36).substring(2, 10)),
+          email: fbUser && fbUser.email ? fbUser.email : email,
+          displayName: fbUser && fbUser.displayName ? fbUser.displayName : (
+            isAdmin ? 'Prof. Rajesh Gupta' :
+            isStudent ? 'Aarav Sharma' :
+            (email.includes('ananya') ? 'Dr. Ananya Sharma' : 'Faculty Member')
+          ),
+          role: isAdmin ? 'admin' : (isStudent ? 'student' : 'advisor'),
+          roleTitle: isAdmin ? 'Dean & Placement Director' : (isStudent ? 'Student (Enrolled)' : 'Lead Faculty Advisor (CSE)'),
+          avatarInitials: (fbUser && fbUser.displayName ? fbUser.displayName : email).substring(0, 2).toUpperCase(),
           provider: 'password',
           loginTime: new Date().toISOString()
         };
@@ -4695,48 +5448,57 @@ Available Nimbus Shell commands:
         hideAuthOverlay();
         showToast(`✨ Welcome, ${userObj.displayName}! Signed in via Firebase.`);
       } catch (err) {
-        alert('Authentication failed: ' + err.message);
+        console.error('Firebase Email SignIn Error:', err);
+        let msg = err.message || 'Firebase sign in failed.';
+        if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential') {
+          msg = 'Invalid credentials or user not registered in Firebase. Switch to Sign Up tab to create your account.';
+        } else if (err.code === 'auth/wrong-password') {
+          msg = 'Incorrect password.';
+        }
+        alert(msg);
+        showToast(`⚠️ ${msg}`);
       } finally {
         if (btn) btn.innerHTML = 'Sign In to Faculty Portal <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
       }
     }
+
 
     async function handleFirebaseGoogleSignIn(rolePreference) {
       const btnFaculty = document.getElementById('btn-google-signin-faculty');
       const btnStudent = document.getElementById('btn-google-signin-student');
       const activeBtn = rolePreference === 'student' ? btnStudent : btnFaculty;
       const originalHtml = activeBtn ? activeBtn.innerHTML : '';
-      if (activeBtn) activeBtn.innerHTML = 'Connecting to Google...';
+      if (activeBtn) activeBtn.innerHTML = 'Opening Google Sign-In...';
 
       try {
-        let googleUser = null;
-        if (typeof firebase !== 'undefined' && firebase.auth) {
-          try {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            provider.addScope('profile');
-            provider.addScope('email');
-            const result = await firebase.auth().signInWithPopup(provider);
-            if (result && result.user) {
-              googleUser = result.user;
-            }
-          } catch (popupErr) {
-            console.warn('Firebase Google popup notification:', popupErr.code, popupErr.message);
-          }
+        if (typeof firebase === 'undefined' || !firebase.auth) {
+          throw new Error('Firebase SDK is not loaded. Please verify internet connection.');
         }
 
-        const role = rolePreference || 'teacher';
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('profile');
+        provider.addScope('email');
+        provider.setCustomParameters({ prompt: 'select_account' });
+
+        const result = await firebase.auth().signInWithPopup(provider);
+        if (!result || !result.user) {
+          throw new Error('Google Sign-In was cancelled or failed to return credentials.');
+        }
+
+        const googleUser = result.user;
+        const role = rolePreference || (googleUser.email && (googleUser.email.includes('student') || googleUser.email.match(/[0-9]{4}/)) ? 'student' : 'teacher');
         const isStudent = (role === 'student');
 
         const userObj = {
-          uid: googleUser ? googleUser.uid : ('google_' + Math.random().toString(36).substring(2, 10)),
-          email: googleUser && googleUser.email ? googleUser.email : (isStudent ? '2023cse001@campuspulse.edu' : 'ananya.sharma@campuspulse.edu'),
-          displayName: googleUser && googleUser.displayName ? googleUser.displayName : (isStudent ? 'Aarav Sharma' : 'Dr. Ananya Sharma'),
+          uid: googleUser.uid,
+          email: googleUser.email || (isStudent ? 'student@campuspulse.edu' : 'faculty@campuspulse.edu'),
+          displayName: googleUser.displayName || (isStudent ? 'Enrolled Student' : 'Faculty Member'),
           role: isStudent ? 'student' : 'teacher',
-          roleTitle: isStudent ? 'Student (2023CSE001 • CSE 2029)' : 'Lead Faculty Advisor (CSE Sec A & B)',
-          avatarInitials: googleUser && googleUser.displayName
+          roleTitle: isStudent ? 'Student (Google Authenticated)' : 'Faculty Mentor (Google Authenticated)',
+          avatarInitials: googleUser.displayName
             ? googleUser.displayName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
-            : 'AS',
-          photoURL: googleUser ? googleUser.photoURL : null,
+            : 'GU',
+          photoURL: googleUser.photoURL || null,
           provider: 'google.com',
           loginTime: new Date().toISOString()
         };
@@ -4744,10 +5506,19 @@ Available Nimbus Shell commands:
         localStorage.setItem('campuspulse_auth_user', JSON.stringify(userObj));
         applyAuthenticatedUser(userObj);
         hideAuthOverlay();
-        showToast(`✨ Welcome, ${userObj.displayName}! Signed in with Google.`);
+        showToast(`✨ Welcome, ${userObj.displayName}! Authenticated via Firebase Google.`);
       } catch (err) {
-        console.error('Google Sign-in failed:', err);
-        showToast(`Google Sign-In: ${err.message}`);
+        console.error('Firebase Google Sign-In error:', err);
+        let msg = err.message || 'Google Sign-In failed.';
+        if (err.code === 'auth/popup-closed-by-user') {
+          msg = 'Sign-in popup was closed before completing authentication.';
+        } else if (err.code === 'auth/unauthorized-domain') {
+          msg = 'Domain is not authorized in Firebase Console -> Authentication -> Settings -> Authorized Domains. Add "localhost".';
+        } else if (err.code === 'auth/popup-blocked') {
+          msg = 'Popup was blocked by your browser. Please allow popups for localhost.';
+        }
+        alert(msg);
+        showToast(`⚠️ ${msg}`);
       } finally {
         if (activeBtn) activeBtn.innerHTML = originalHtml;
       }
@@ -4773,44 +5544,35 @@ Available Nimbus Shell commands:
 
       const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'CP';
 
-      const userObj = {
-        uid: 'fb_user_' + Math.random().toString(36).substring(2, 10),
-        email,
-        displayName: name,
-        role: role === 'recruiter' ? 'advisor' : role,
-        roleTitle: roleTitles[role] || 'Institutional User',
-        avatarInitials: initials,
-        provider: 'password',
-        loginTime: new Date().toISOString()
-      };
-
-      localStorage.setItem('campuspulse_auth_user', JSON.stringify(userObj));
-      applyAuthenticatedUser(userObj);
-      hideAuthOverlay();
-      showToast(`🎉 Account created! Welcome to CampusPulse, ${name}.`);
-    }
-
-    async function handleFirebaseGoogleSignIn() {
       try {
+        if (typeof firebase !== 'undefined' && firebase.auth) {
+          try {
+            await firebase.auth().createUserWithEmailAndPassword(email, pwd);
+          } catch (createErr) {
+            console.warn('Firebase createUser warning:', createErr);
+          }
+        }
+
         const userObj = {
-          uid: 'fb_google_' + Math.random().toString(36).substring(2, 10),
-          email: 'priyvrat.dwivedi@krmu.edu.in',
-          displayName: 'Priyvrat Dwivedi',
-          role: 'advisor',
-          roleTitle: 'Faculty Advisor & Smart Campus Lead',
-          avatarInitials: 'PD',
-          provider: 'google.com',
+          uid: 'fb_user_' + Math.random().toString(36).substring(2, 10),
+          email,
+          displayName: name,
+          role: role === 'recruiter' ? 'advisor' : role,
+          roleTitle: roleTitles[role] || 'Institutional User',
+          avatarInitials: initials,
+          provider: 'password',
           loginTime: new Date().toISOString()
         };
 
         localStorage.setItem('campuspulse_auth_user', JSON.stringify(userObj));
         applyAuthenticatedUser(userObj);
         hideAuthOverlay();
-        showToast('✓ Signed in with Google Workspace credentials!');
+        showToast(`🎉 Account created! Welcome to CampusPulse, ${name}.`);
       } catch (err) {
-        alert('Google Sign-In failed');
+        alert('Registration failed: ' + err.message);
       }
     }
+
 
     function handleFirebaseResetPassword() {
       const email = document.getElementById('auth-signin-email').value.trim() || 'your email';
@@ -4835,6 +5597,7 @@ Available Nimbus Shell commands:
           'student-reports',
           'college-reports',
           'excellence-review',
+          'naac-evaluator',
           'kpmg-segmentation',
           'risk-support',
           'interventions-os',
@@ -4866,6 +5629,7 @@ Available Nimbus Shell commands:
           'admin-portal',
           'action-list',
           'student-reports',
+          'naac-evaluator',
           'kpmg-segmentation',
           'risk-support',
           'interventions-os',
@@ -4890,6 +5654,7 @@ Available Nimbus Shell commands:
         allowedViews: [
           'action-list',
           'student-reports',
+          'naac-evaluator',
           'kpmg-segmentation',
           'risk-support',
           'interventions-os',
@@ -4915,6 +5680,7 @@ Available Nimbus Shell commands:
           'student-reports',
           'whatif-sandbox',
           'kpmg-formulation',
+          'naac-evaluator',
           'learn-modules',
           'lab-practice',
           'ai-mentor',
@@ -4936,6 +5702,7 @@ Available Nimbus Shell commands:
         allowedViews: [
           'kpmg-segmentation',
           'student-reports',
+          'naac-evaluator',
           'project-bank',
           'assessment-analytics',
           'kpmg-formulation'
@@ -4950,11 +5717,11 @@ Available Nimbus Shell commands:
       if (studentListCache && studentListCache.length > 0) {
         const found = studentListCache.find(s => s.name && s.name.toLowerCase().includes('aarav'));
         if (found) return found.student_ref;
-        const specific = studentListCache.find(s => s.student_ref === 'stu_9f9974d49a1b');
+        const specific = studentListCache.find(s => s.student_ref === 'stu_1107c6563069');
         if (specific) return specific.student_ref;
         return studentListCache[0].student_ref;
       }
-      return 'stu_9f9974d49a1b';
+      return 'stu_1107c6563069';
     }
 
     function applyRoleRBAC(role, customUserObj) {
@@ -4994,13 +5761,20 @@ Available Nimbus Shell commands:
       const roleText = document.getElementById('active-role-badge-text');
 
       if (navAvatar) navAvatar.innerText = userObj.avatarInitials;
-      if (navName) navName.innerText = userObj.displayName;
+      if (navName) {
+        // Show clean friendly name on top bar
+        const firstName = userObj.displayName ? userObj.displayName.split(' ')[0] : 'User';
+        navName.innerText = (userObj.displayName && userObj.displayName.includes('Dr.')) 
+          ? ('Dr. ' + (userObj.displayName.split(' ')[1] || 'Sharma'))
+          : firstName;
+      }
       if (dropAvatar) dropAvatar.innerText = userObj.avatarInitials;
       if (dropName) dropName.innerText = userObj.displayName;
       if (dropEmail) dropEmail.innerText = userObj.email;
       if (dropRole) dropRole.innerText = userObj.roleTitle;
       if (dropAuth) dropAuth.innerText = `Firebase Authenticated (${userObj.provider || 'role_guard'})`;
       if (roleSelector) roleSelector.value = role;
+
 
       if (roleIndicator) {
         roleIndicator.className = `active-role-pill ${meta.badgeClass}`;
@@ -5179,6 +5953,7 @@ Available Nimbus Shell commands:
       if (viewId === 'college-reports') loadCollegeReports();
       if (viewId === 'student-reports') loadStudentReportsOverview();
       if (viewId === 'excellence-review') loadExcellenceReview();
+      if (viewId === 'naac-evaluator') loadNaacPlatform();
       if (viewId === 'learn-modules') loadLearningSprints();
       if (viewId === 'lab-practice') loadLabsPractice();
       if (viewId === 'trainers-schedule') loadTrainerSchedule();
@@ -5514,6 +6289,453 @@ Available Nimbus Shell commands:
       }
     }
 
+    // ══════════════════════════════════════════════════════════════════════
+    // NAAC ACCREDITATION & NEP 2020 PLATFORM JAVASCRIPT LAYER
+    // ══════════════════════════════════════════════════════════════════════
+
+    let naacOverviewCache = null;
+    let naacCriteriaCache = null;
+    let naacNepCache = null;
+    let naacSsrCache = null;
+    let naacSelectedCritId = 1;
+    let naacRadarChartInstance = null;
+    let naacTelemetryChartInstance = null;
+    let naacSimulatedScores = {};
+
+    async function loadNaacPlatform(forceRefresh = false) {
+      try {
+        if (!naacOverviewCache || forceRefresh) {
+          const [resOverview, resCriteria, resNep, resSsr] = await Promise.all([
+            fetch('/api/v1/naac/overview').then(r => r.json()),
+            fetch('/api/v1/naac/criteria').then(r => r.json()),
+            fetch('/api/v1/naac/nep-matrix').then(r => r.json()),
+            fetch('/api/v1/naac/ssr-export').then(r => r.json())
+          ]);
+
+          naacOverviewCache = resOverview.data;
+          naacCriteriaCache = resCriteria.data;
+          naacNepCache = resNep.data;
+          naacSsrCache = resSsr.data;
+
+          naacSimulatedScores = {};
+          if (naacOverviewCache && naacOverviewCache.criteria) {
+            naacOverviewCache.criteria.forEach(c => {
+              naacSimulatedScores[c.key] = c.score;
+            });
+          }
+        }
+
+        renderNaacOverview(naacOverviewCache);
+        renderNaacCriteria(naacCriteriaCache);
+        renderNaacNepMatrix(naacNepCache);
+        renderNaacSimulator(naacOverviewCache);
+        renderNaacSsrDossier(naacSsrCache);
+
+        if (forceRefresh) {
+          showToast('✅ NAAC accreditation telemetry synchronized with live college DB!');
+        }
+      } catch (err) {
+        console.error('Failed to load NAAC platform data:', err);
+        showToast('⚠️ Could not fetch NAAC evaluation data. Using offline defaults.');
+      }
+    }
+
+    function switchNaacSubTab(subTabId) {
+      document.querySelectorAll('.naac-subtab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-naac-subtab-' + subTabId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.querySelectorAll('.naac-subview').forEach(view => view.style.display = 'none');
+      const targetView = document.getElementById('naac-subview-' + subTabId);
+      if (targetView) targetView.style.display = 'block';
+
+      if (subTabId === 'overview') {
+        setTimeout(renderNaacCharts, 50);
+      }
+    }
+
+    function renderNaacOverview(data) {
+      if (!data) return;
+
+      const heroGrade = document.getElementById('naac-hero-grade');
+      if (heroGrade) heroGrade.innerText = data.grade || 'A++';
+
+      const heroCgpa = document.getElementById('naac-hero-cgpa-display');
+      if (heroCgpa) heroCgpa.innerHTML = `${data.cgpa || 3.65} <span style="font-size:0.9rem; opacity:0.8; font-weight:600; color:#ffffff;">/ 4.00</span>`;
+
+      const heroStatus = document.getElementById('naac-hero-status-display');
+      if (heroStatus) heroStatus.innerText = `${data.status_description || 'Accredited with Distinction'} • ${data.maturity_level || 'Level 4 (National Eminence)'}`;
+
+      const heroStudents = document.getElementById('naac-hero-students-display');
+      if (heroStudents) heroStudents.innerText = `${data.evaluated_students_count || 469} Active`;
+
+      const heroNep = document.getElementById('naac-hero-nep-display');
+      if (heroNep) heroNep.innerText = `${data.nep_compliance_pct || 94.8}%`;
+
+      const kpiCgpa = document.getElementById('naac-kpi-cgpa');
+      if (kpiCgpa) kpiCgpa.innerHTML = `${data.cgpa || 3.65} <span style="font-size:0.8rem; color:var(--text-muted);">/ 4.00</span>`;
+
+      const grid = document.getElementById('naac-criteria-grid');
+      if (grid && data.criteria) {
+        grid.innerHTML = data.criteria.map(c => `
+          <div class="naac-crit-card" onclick="selectNaacCriterion(${c.id})" style="cursor:pointer;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+              <span style="font-size:0.75rem; font-weight:700; color:#7c3aed; background:rgba(124,58,237,0.08); padding:2px 8px; border-radius:4px;">Criterion ${c.id}</span>
+              <span class="naac-score-pill" style="background:#ecfdf5; color:#047857;">${c.score} / 4.00</span>
+            </div>
+            <h4 style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:4px;">${c.name}</h4>
+            <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.4; margin-bottom:12px; flex:1;">${c.summary}</div>
+            <div style="border-top:1px solid var(--border-color); padding-top:8px; display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:var(--text-muted);">
+              <div>Weight: <strong style="color:#0f172a;">${c.weight}</strong> pts</div>
+              <div>Points: <strong style="color:#7c3aed;">${c.weighted_points}</strong> / ${c.max_weighted_points}</div>
+            </div>
+            <div style="margin-top:6px; background:#e2e8f0; border-radius:4px; height:5px; overflow:hidden;">
+              <div style="background:#7c3aed; height:100%; width:${c.achievement_pct}%;"></div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      renderNaacCharts();
+    }
+
+    function renderNaacCharts() {
+      if (!naacOverviewCache) return;
+
+      const radarCtx = document.getElementById('naacRadarChart');
+      if (radarCtx) {
+        if (naacRadarChartInstance) naacRadarChartInstance.destroy();
+
+        const labels = naacOverviewCache.criteria.map(c => `Cr ${c.id}: ${c.name.split(' ')[0]}`);
+        const actualScores = naacOverviewCache.criteria.map(c => c.score);
+        const benchmarkScores = [3.50, 3.50, 3.25, 3.60, 3.50, 3.40, 3.70];
+
+        naacRadarChartInstance = new Chart(radarCtx, {
+          type: 'radar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'KRMU Attainment',
+                data: actualScores,
+                backgroundColor: 'rgba(124, 58, 237, 0.2)',
+                borderColor: '#7c3aed',
+                borderWidth: 2,
+                pointBackgroundColor: '#7c3aed',
+                pointRadius: 4,
+              },
+              {
+                label: 'NAAC A++ Threshold',
+                data: benchmarkScores,
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderColor: '#10b981',
+                borderWidth: 1.5,
+                borderDash: [4, 4],
+                pointBackgroundColor: '#10b981',
+                pointRadius: 3,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                min: 2.0,
+                max: 4.0,
+                ticks: { stepSize: 0.5, font: { size: 9 } },
+                pointLabels: { font: { size: 10, weight: '600' } }
+              }
+            },
+            plugins: {
+              legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+            }
+          }
+        });
+      }
+
+      const telCtx = document.getElementById('naacTelemetryChart');
+      if (telCtx) {
+        if (naacTelemetryChartInstance) naacTelemetryChartInstance.destroy();
+
+        const signals = naacOverviewCache.live_signals || {
+          average_attendance: 78.4,
+          average_academic_index: 74.8,
+          placement_readiness_pct: 84.7,
+          risk_mitigation_rate: 92.5,
+          backlog_clearance_rate: 94.2
+        };
+
+        naacTelemetryChartInstance = new Chart(telCtx, {
+          type: 'bar',
+          data: {
+            labels: [
+              'Attendance (%)',
+              'Academic Index',
+              'Placement Readiness (%)',
+              'Intervention Resolution (%)',
+              'Pass Rate (%)'
+            ],
+            datasets: [{
+              label: 'Cohort Level Signal',
+              data: [
+                signals.average_attendance,
+                signals.average_academic_index,
+                signals.placement_readiness_pct,
+                signals.risk_mitigation_rate,
+                signals.backlog_clearance_rate
+              ],
+              backgroundColor: [
+                '#3b82f6',
+                '#6366f1',
+                '#10b981',
+                '#f59e0b',
+                '#8b5cf6'
+              ],
+              borderRadius: 6,
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                min: 50,
+                max: 100,
+                ticks: { stepSize: 10, font: { size: 10 } }
+              },
+              x: {
+                ticks: { font: { size: 9 } }
+              }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+      }
+    }
+
+    function renderNaacCriteria(data) {
+      if (!data || !data.criteria) return;
+
+      const selectorContainer = document.getElementById('naac-crit-selector-pills');
+      if (selectorContainer) {
+        selectorContainer.innerHTML = data.criteria.map(c => `
+          <button class="btn btn-sm ${c.id === naacSelectedCritId ? 'btn-primary' : 'btn-outline'}" 
+                  style="${c.id === naacSelectedCritId ? 'background:#7c3aed; border-color:#6d28d9;' : ''}" 
+                  onclick="selectNaacCriterion(${c.id})">
+            Cr ${c.id}: ${c.name.split(' ')[0]}
+          </button>
+        `).join('');
+      }
+
+      renderSelectedCriterionDetail(naacSelectedCritId);
+    }
+
+    function selectNaacCriterion(id) {
+      naacSelectedCritId = id;
+      switchNaacSubTab('criteria');
+      renderNaacCriteria(naacCriteriaCache);
+    }
+
+    function renderSelectedCriterionDetail(id) {
+      if (!naacCriteriaCache || !naacCriteriaCache.criteria) return;
+      const crit = naacCriteriaCache.criteria.find(c => c.id === id) || naacCriteriaCache.criteria[0];
+      const container = document.getElementById('naac-criterion-detail-container');
+      if (!container) return;
+
+      container.innerHTML = `
+        <div style="background:var(--bg-subtle); border-radius:10px; padding:18px 22px; margin-bottom:18px; border:1px solid var(--border-color);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:10px;">
+            <div>
+              <span style="font-size:0.75rem; font-weight:700; color:#7c3aed; text-transform:uppercase;">Criterion ${crit.id} (NAAC RAF)</span>
+              <h3 style="font-size:1.15rem; font-weight:800; color:#0f172a;">${crit.name}</h3>
+              <div style="font-size:0.78rem; color:var(--text-muted); margin-top:2px;">Lead Evaluator: <strong>${crit.lead_evaluator || 'IQAC Committee'}</strong></div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:1.5rem; font-weight:900; color:#7c3aed;">${crit.current_score || crit.benchmark_score} <span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">/ 4.00</span></div>
+              <div style="font-size:0.72rem; color:#166534; font-weight:700;">Weighted: ${crit.weighted_points || (crit.weight * crit.benchmark_score)} / ${crit.weight * 4} pts</div>
+            </div>
+          </div>
+          <div style="font-size:0.8rem; color:#334155; line-height:1.5;">${crit.summary}</div>
+        </div>
+
+        <h4 style="font-size:0.9rem; font-weight:800; color:#0f172a; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+          <span>📋</span> Key Indicators (KIs), Measurable Institutional KPIs &amp; Documentary Evidence
+        </h4>
+
+        <div class="table-container">
+          <table class="naac-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">KI Code</th>
+                <th style="width:220px;">Indicator Title</th>
+                <th style="width:70px;">Weight</th>
+                <th style="width:70px;">Score</th>
+                <th>Institutional Measurable KPI</th>
+                <th>Verifiable Documentary Evidence</th>
+                <th style="width:110px;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${crit.key_indicators.map(ki => `
+                <tr>
+                  <td><strong style="color:#7c3aed; font-family:var(--font-mono);">${ki.code}</strong></td>
+                  <td><strong>${ki.title}</strong></td>
+                  <td><span class="reason-chip">${ki.weight}</span></td>
+                  <td><strong style="color:#0f172a;">${ki.score}</strong></td>
+                  <td style="font-size:0.78rem; line-height:1.4;">${ki.kpi}</td>
+                  <td style="font-size:0.74rem; color:var(--text-muted); font-family:var(--font-mono);">${ki.evidence}</td>
+                  <td>
+                    <span class="naac-score-pill" style="background:#ecfdf5; color:#047857;">${ki.status}</span>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderNaacNepMatrix(data) {
+      if (!data || !data.pillars) return;
+      const grid = document.getElementById('naac-nep-pillars-grid');
+      if (!grid) return;
+
+      grid.innerHTML = data.pillars.map(p => `
+        <div class="card" style="border-top:3px solid #7c3aed; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+              <h4 style="font-size:0.9rem; font-weight:800; color:#0f172a; flex:1;">${p.title}</h4>
+              <span class="naac-score-pill" style="background:#ecfdf5; color:#047857; margin-left:8px;">${p.score_pct}%</span>
+            </div>
+            <div style="font-size:0.76rem; color:var(--text-muted); line-height:1.45; margin-bottom:12px;">${p.highlights}</div>
+          </div>
+          <div style="border-top:1px solid var(--border-color); padding-top:8px; display:flex; justify-content:space-between; align-items:center; font-size:0.7rem;">
+            <span style="color:#7c3aed; font-weight:700;">${p.status}</span>
+            <span style="color:var(--text-dim); font-family:var(--font-mono);">${p.evidence_ref}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderNaacSimulator(data) {
+      if (!data || !data.criteria) return;
+      const container = document.getElementById('naac-simulator-sliders');
+      if (!container) return;
+
+      container.innerHTML = data.criteria.map(c => `
+        <div class="naac-slider-container">
+          <div class="naac-slider-header">
+            <span>Criterion ${c.id}: ${c.name} (Weight: ${c.weight})</span>
+            <strong id="sim-val-${c.key}" style="color:#7c3aed;">${(naacSimulatedScores[c.key] || c.score).toFixed(2)}</strong>
+          </div>
+          <input type="range" class="naac-slider-input" id="slider-${c.key}" min="2.00" max="4.00" step="0.05" 
+                 value="${naacSimulatedScores[c.key] || c.score}" oninput="updateNaacSimulation('${c.key}', this.value)">
+        </div>
+      `).join('');
+
+      recomputeSimulationDisplay();
+    }
+
+    async function updateNaacSimulation(key, value) {
+      naacSimulatedScores[key] = parseFloat(value);
+      const valLabel = document.getElementById('sim-val-' + key);
+      if (valLabel) valLabel.innerText = parseFloat(value).toFixed(2);
+
+      try {
+        const res = await fetch('/api/v1/naac/simulate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ overrides: naacSimulatedScores })
+        });
+        const json = await res.json();
+        const d = json.data;
+
+        document.getElementById('naac-sim-grade').innerText = d.grade || 'A++';
+        document.getElementById('naac-sim-cgpa').innerHTML = `${d.cgpa || 3.65} <span style="font-size:0.85rem; color:var(--text-muted);">/ 4.00</span>`;
+        document.getElementById('naac-sim-status').innerText = d.status_description || 'Accredited with Distinction';
+        document.getElementById('naac-sim-maturity').innerText = d.maturity_level || 'Level 4 (Institution of National Eminence)';
+        document.getElementById('naac-sim-weighted-points').innerText = `${d.total_weighted_points} / ${d.total_weight * 4}`;
+
+        const delta = (d.cgpa - (naacOverviewCache ? naacOverviewCache.cgpa : 3.65)).toFixed(2);
+        const deltaEl = document.getElementById('naac-sim-delta');
+        if (deltaEl) {
+          deltaEl.innerText = (delta >= 0 ? '+' : '') + delta;
+          deltaEl.style.color = delta >= 0 ? '#166534' : '#991b1b';
+        }
+      } catch (e) {
+        console.warn('Simulation recompute error:', e);
+      }
+    }
+
+    function resetNaacSimulation() {
+      if (naacOverviewCache && naacOverviewCache.criteria) {
+        naacOverviewCache.criteria.forEach(c => {
+          naacSimulatedScores[c.key] = c.score;
+          const sl = document.getElementById('slider-' + c.key);
+          if (sl) sl.value = c.score;
+          const valLabel = document.getElementById('sim-val-' + c.key);
+          if (valLabel) valLabel.innerText = c.score.toFixed(2);
+        });
+        updateNaacSimulation('criterion_1', naacSimulatedScores['criterion_1']);
+        showToast('Reset simulation sliders to verified baseline.');
+      }
+    }
+
+    function recomputeSimulationDisplay() {
+      if (naacOverviewCache) {
+        updateNaacSimulation('criterion_1', naacSimulatedScores['criterion_1'] || 3.70);
+      }
+    }
+
+    function renderNaacSsrDossier(data) {
+      if (!data || !data.criterion_summary_table) return;
+      const table = document.getElementById('naac-ssr-table');
+      if (!table) return;
+
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>Name</th>
+            <th>Weightage (Wi)</th>
+            <th>Criterion Grade Point (CrGP)</th>
+            <th>Weighted Grade Point (WGP)</th>
+            <th>Lead Evaluator</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${data.criterion_summary_table.map(row => `
+            <tr>
+              <td><strong>Criterion ${row.criterion_number}</strong></td>
+              <td>${row.name}</td>
+              <td><span class="reason-chip">${row.weightage}</span></td>
+              <td><strong style="color:#0f172a;">${row.criterion_grade_point}</strong></td>
+              <td><strong style="color:#7c3aed;">${row.weighted_score}</strong></td>
+              <td style="font-size:0.75rem; color:var(--text-muted);">${row.lead_evaluator}</td>
+            </tr>
+          `).join('')}
+          <tr style="background:var(--bg-subtle); font-weight:800;">
+            <td colspan="2">Institutional Total (Sum)</td>
+            <td>1000</td>
+            <td>—</td>
+            <td style="color:#7c3aed; font-size:0.95rem;">${Math.round(data.overall_evaluation.projected_cgpa * 1000)}</td>
+            <td>Institutional CGPA: ${data.overall_evaluation.projected_cgpa} (${data.overall_evaluation.projected_grade})</td>
+          </tr>
+        </tbody>
+      `;
+    }
+
+    function printOrExportNaacSsr() {
+      switchNaacSubTab('ssr');
+      setTimeout(() => {
+        window.print();
+      }, 200);
+      showToast('📄 Printing / Exporting NAAC SSR Institutional Dossier...');
+    }
+
     // College Reports Telemetry & Login Activity
     async function loadCollegeReports() {
       try {
@@ -5650,6 +6872,16 @@ Available Nimbus Shell commands:
       const sel = document.getElementById('student-report-select');
       const badge = document.getElementById('student-self-badge');
       const repTitle = document.getElementById('student-report-title');
+
+      if (!studentListCache || studentListCache.length === 0) {
+        try {
+          const r = await fetch('/api/v1/advisors/me/action-list?limit=50');
+          const j = await r.json();
+          if (j.data && j.data.action_list) {
+            studentListCache = j.data.action_list;
+          }
+        } catch (e) {}
+      }
 
       if (isStudent) {
         if (repTitle) repTitle.innerText = "My Academic Success Dossier";
@@ -7780,11 +9012,8 @@ Available Nimbus Shell commands:
 
     window.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem("theme");
-      if (savedTheme) {
-        document.documentElement.setAttribute("data-theme", savedTheme);
-      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute("data-theme", "dark");
-      }
+      // Default is always light mode; only use saved preference if explicitly set
+      document.documentElement.setAttribute("data-theme", savedTheme || "light");
 
       initFirebaseAuth();
       const urlParams = new URLSearchParams(window.location.search);

@@ -220,5 +220,4 @@ services:
 - **Transparent Attribution**: Every recommendation cites auditable indicators rather than automated decisions.
 - **Scope Limitations**: The system evaluates campus engagement and readiness indicators within the collegiate context; it does not predict real-world lifetime career outcomes.
 - **PII Scope Protection**: Sensitive personal attributes (socio-economic status, caste, religion, gender) are excluded from data ingestion.
-#   B Y T E X L _ H A C K A T H O N  
- 
+# BYTEXL_HACKATHON

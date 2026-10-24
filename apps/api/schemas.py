@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 class ResponseMeta(BaseModel):
     config_hash: Optional[str] = None
     targets_hash: Optional[str] = None
-    generated_at: str = Field(default_factory=lambda: datetime.datetime.utcnow().isoformat())
+    generated_at: str = Field(default_factory=lambda: datetime.datetime.now(datetime.timezone.utc).isoformat())
     request_id: Optional[str] = None
 
 
@@ -57,3 +57,7 @@ class WhatIfRequest(BaseModel):
 class ChatRequest(BaseModel):
     query: str
     advisor_id: Optional[str] = None
+
+
+class NaacSimulationRequest(BaseModel):
+    overrides: Optional[Dict[str, float]] = None
