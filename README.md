@@ -2,7 +2,7 @@
 
 > **Smart Campus Analytics — Predict, Optimize & Improve Student Success**  
 > Explainable, CI-audited, deterministic placement-readiness and student-success operating system for colleges.  
-> Built for the **KPMG in India Hackathon (v5.0.0-FINAL)**.
+> Built for the enterprise hackathon showcasing student success analytics.
 
 ---
 
@@ -21,15 +21,15 @@ CampusPulse consolidates these disparate campus signals into an auditable, deter
 
 ---
 
-## 🧩 KPMG Challenge Problem Mapping
 
-| KPMG Challenge Requirement | CampusPulse Solution & Evidence |
-| :--- | :--- |
-| **Data Integration & Analysis (30%)** | Automated ingestion pipeline with multi-format support (CSV/XLSX), outlier winsorization, missing-data imputation, SHA-256 deduplication, and 4-week historical telemetry across 119 seeded students and 825 metric snapshots. |
-| **Success Score & Risk Identification (25%)** | Deterministic 6-indicator formula ($S \in [0, 100]$), 3 fail-safe hard safety floors, review bands, 3-week EWMA momentum tracking, and 6 rule-based hidden risk detectors. |
-| **Dashboard & Visualization (25%)** | Single Page Application featuring an Advisor Action List, Student 360 profile, waterfall point attribution, 2D quadrant scatter matrix, 9-tab college telemetry suite, and what-if simulation sandbox. |
-| **Problem Understanding (10%)** | Advisor-first, humane decision support architecture designed for actionability, closed-loop intervention lifecycle tracking, and zero punitive labeling. |
-| **Presentation & Demo (10%)** | Embedded 16:9 interactive presentation deck (7 slides with timer controls and presenter notes) and sub-60-second advisor triage workflow. |
+
+
+
+
+
+
+
+
 
 ---
 
@@ -221,3 +221,5 @@ services:
 - **Scope Limitations**: The system evaluates campus engagement and readiness indicators within the collegiate context; it does not predict real-world lifetime career outcomes.
 - **PII Scope Protection**: Sensitive personal attributes (socio-economic status, caste, religion, gender) are excluded from data ingestion.
 # BYTEXL_HACKATHON
+#   C a m p u s P u l s e  
+ 
